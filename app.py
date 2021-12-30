@@ -111,9 +111,9 @@ def webhook_handler():
 
 @app.route("/show-fsm", methods=["POST"])
 def show_fsm():
-    machine.get_graph().draw("fsm.png", prog="dot", format="png")
+    #machine.get_graph().draw("fsm.png", prog="dot", format="png")
     send_text_message(event.reply_token, "fuckfinalproject")
-    return send_file("fsm.png", mimetype="image/png")
+    return #send_file("fsm.png", mimetype="image/png")
 
 
 if __name__ == "__main__":
