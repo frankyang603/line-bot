@@ -89,7 +89,7 @@ def webhook_handler():
     # parse webhook body
     try:
         events = parser.parse(body, signature)
-    except InvalidSignatureError:
+    except InvalidSignatureError: 
         abort(400)
 
     # if event is MessageEvent and message is TextMessage, then echo text
@@ -109,12 +109,15 @@ def webhook_handler():
     return "OK"
 
 
-@app.route("/show-fsm", methods=["GET"])
+@app.route("/show-fsm", methods=["POST"])
 def show_fsm():
     machine.get_graph().draw("fsm.png", prog="dot", format="png")
+    send_text_message(event.reply_token, "fuckfinalproject")
     return send_file("fsm.png", mimetype="image/png")
 
 
 if __name__ == "__main__":
     port = os.environ.get("PORT", 8000)
     app.run(host="0.0.0.0", port=port, debug=True)
+
+
