@@ -119,8 +119,10 @@ def show_fsm():
             auto_transitions=machineData["auto_transitions"],
             show_conditions=machineData["show_conditions"]
         )
-    machine.get_graph().draw("fsm.png", prog="dot", format="png")
+    machine["graph"].get_graph().draw("fsm.png", prog="dot", format="png")
     return send_file("fsm.png", mimetype="image/png")
+    #machine.get_graph().draw("fsm.png", prog="dot", format="png")
+    #return send_file("fsm.png", mimetype="image/png")
 
 
 if __name__ == "__main__":
