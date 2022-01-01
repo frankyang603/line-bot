@@ -2,10 +2,13 @@ from transitions.extensions import GraphMachine
 
 from utils import send_text_message
 
+from transitions.extensions import GraphMachine 
+
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
+        self.machine.get_graph().draw("FSM.png", prog= 'dot') #new add
 
     def is_going_to_state1(self, event):
         text = event.message.text
