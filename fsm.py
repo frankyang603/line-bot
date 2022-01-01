@@ -1,6 +1,8 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message
+from utils import send_text_message 
+
+from warriors import func ,funcin
 
 from transitions.extensions import GraphMachine 
 
@@ -24,9 +26,10 @@ class TocMachine(GraphMachine):
 
     def on_enter_state1(self, event):
         print("I'm entering state1")
-
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger state1")
+        URL="https://www.basketball-reference.com/teams/GSW/2022.html"
+        a=func(URL)
+        #send_text_message(reply_token, "Trigger state1")
         self.go_back()
 
     #def on_exit_state1(self):
