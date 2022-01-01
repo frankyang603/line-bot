@@ -9,6 +9,9 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 from fsm import TocMachine
 from utils import send_text_message
+#from machine_data import  machineData
+
+from transitions.extensions import GraphMachine 
 
 load_dotenv()
 
@@ -111,18 +114,9 @@ def webhook_handler():
 
 @app.route("/show-fsm", methods=["GET"])
 def show_fsm():
-    if "graph" not in machine:
-        machine["graph"] = TocMachine(
-            states=machineData["states"],
-            transitions=machineData["transitions"],
-            initial=machineData["initial"],
-            auto_transitions=machineData["auto_transitions"],
-            show_conditions=machineData["show_conditions"]
-        )
-    machine["graph"].get_graph().draw("fsm.png", prog="dot", format="png")
+    self.machine.get_graph().draw("FSM.png", prog= 'dot') #new add
+    machine.get_graph().draw("fsm.png", prog="dot", format="png")
     return send_file("fsm.png", mimetype="image/png")
-    #machine.get_graph().draw("fsm.png", prog="dot", format="png")
-    #return send_file("fsm.png", mimetype="image/png")
 
 
 if __name__ == "__main__":
