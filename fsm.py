@@ -22,6 +22,9 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text.lower() == "go to state3"
 
+    def state1_to_state2(self, event):
+        text = event.message.text
+        return text.lower() == "go to state2"
 
     def on_enter_state1(self, event):
         print("I'm entering state1")
