@@ -17,7 +17,7 @@ def func(url):
             u = tr.find_all("td")
             back+=u[0].getText()
             print(u[0].getText())
-            #print(u[0].a["href"])
+            
             funcin("https://www.basketball-reference.com"+u[0].a["href"])
     account=0
     send_text_message(reply_token,back)
