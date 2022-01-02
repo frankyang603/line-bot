@@ -40,7 +40,7 @@ class TocMachine(GraphMachine):
     def on_enter_state2(self, event):
         print("I'm entering state2")
         text = event.message.text
-        playerindex=text.split()[1]
+        global playerindex=text.split()[1]
         URL="https://www.basketball-reference.com/teams/GSW/2022.html"
         a=func(URL,1,playerindex,0)
         reply_token = event.reply_token
@@ -48,6 +48,7 @@ class TocMachine(GraphMachine):
         #self.go_back()
 
     def on_enter_state3(self, event):
+        global playerindex
         print("I'm entering state3")
         text = event.message.text
         dataindex=text.split()[1]
