@@ -1,5 +1,5 @@
 import urllib.request as req
-def func(url):
+def func(url,num):
     request=req.Request(url,headers={
         "User-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36",
     })
@@ -13,15 +13,15 @@ def func(url):
     for tr in titles.children:
         if isinstance(tr, bs4.element.Tag):
             u = tr.find_all("td")
-            #back+=u[0].getText()
-            print(u[0].getText())
-            #a=funcin("https://www.basketball-reference.com"+u[0].a["href"])
-
-    account=0
-    #send_text_message(reply_token,back)
+            back+=u[0].getText()
+            back+="\n"
+            #print(u[0].getText())
+            if(num==1):
+               back=funcin("https://www.basketball-reference.com"+u[0].a["href"],back)
+               back+="\n"
     return back
 
-def funcin(url):
+def funcin(url,back):
     request=req.Request(url,headers={
         "User-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36",
     })
@@ -33,28 +33,30 @@ def funcin(url):
     titles=root.tr
     for tr in titles:
         if isinstance(tr, bs4.element.Tag):
-            #back+=tr.getText()
-            #back+=" "
-            print(tr.getText(),end=" ")
-    print(end="\n")
-    #back+="\n"
+            back+=tr.getText()
+            back+=" "
+            #print(tr.getText(),end=" ")
+    #print(end="\n")
+    back+="\n"
     titles=root.tbody
     for tr in titles.children:
         if isinstance(tr, bs4.element.Tag):
-            u = tr.find("th")
-            #back+=u.getText()
-            #back+=" "
-            print(u.getText(),end=" ")
-            u = tr.find_all("td")
-            for i in range(0,29):
-                print(u[i].getText(),end=" ")
-                #back+=u[i].getText()
-                #back+=" "
-            #back+="\n"
-            print(end="\n")
-    account=0
-    return account
+            try:
+                u = tr.find("th")
+                back+=u.getText()
+                back+=" "
+                #print(u.getText(),end=" ")
+                u = tr.find_all("td")
+                for i in range(0,29):
+                    #print(u[i].getText(),end=" ")
+                    back+=u[i].getText()
+                    back+=" "
+                back+="\n"
+                #print(end="\n")
+            except AttributeError:
+                continue
+    return back
 
 URL="https://www.basketball-reference.com/teams/GSW/2022.html"
-a=func(URL) 
+a=func(URL,0) 
 print(a)
