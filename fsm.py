@@ -8,6 +8,8 @@ from transitions.extensions import GraphMachine
 
 #pygraphviz = "==1.5"
 
+playerindex=0
+
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
