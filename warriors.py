@@ -19,6 +19,8 @@ def func(url,num):
             if(num==1):
                back=funcin("https://www.basketball-reference.com"+u[0].a["href"],back)
                back+="\n"
+    back+="Select a player"
+    back+="\n"
     return back
 
 def funcin(url,back):
