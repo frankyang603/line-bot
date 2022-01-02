@@ -14,7 +14,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_state1(self, event):
         text = event.message.text
-        return text.lower() == "go to state1"
+        return text.lower() == "menu"
 
     def is_going_to_state2(self, event):
         text = event.message.text
@@ -22,11 +22,10 @@ class TocMachine(GraphMachine):
 
     def is_going_to_state3(self, event):
         text = event.message.text
-        return text.lower() == "go to state3"
+        return "data" in text.lower()
 
     def on_enter_state1(self, event):
         print("I'm entering state1")
-        
         reply_token = event.reply_token
         URL="https://www.basketball-reference.com/teams/GSW/2022.html"
         a=func(URL,0,0,0)
@@ -38,10 +37,8 @@ class TocMachine(GraphMachine):
 
     def on_enter_state2(self, event):
         print("I'm entering state2")
-        
         text = event.message.text
         playerindex=text.split()[1]
-        print(playerindex)
         URL="https://www.basketball-reference.com/teams/GSW/2022.html"
         a=func(URL,1,playerindex,0)
         reply_token = event.reply_token
@@ -50,7 +47,10 @@ class TocMachine(GraphMachine):
 
     def on_enter_state3(self, event):
         print("I'm entering state3")
-
+        text = event.message.text
+        dataindex=text.split()[1]
+        URL="https://www.basketball-reference.com/teams/GSW/2022.html"
+        a=func(URL,2,playerindex,dataindex)
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger state3")
         self.go_back()
