@@ -79,8 +79,8 @@ def funcin(url,back,indd,mm):
     return back
 
 URL="https://www.basketball-reference.com/teams/GSW/2022.html"
-#a=func(URL,2,5,6) 
-#print(a)
+a=func(URL,2,8,4) 
+print(a)
 
 
 
