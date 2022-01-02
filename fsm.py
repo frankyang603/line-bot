@@ -48,6 +48,7 @@ class TocMachine(GraphMachine):
         text = event.message.text
         playerindex=text.split()[1]
         print(playerindex)
+        URL="https://www.basketball-reference.com/teams/GSW/2022.html"
         a=func(URL,1,playerindex)
         reply_token = event.reply_token
         send_text_message(reply_token,a)
