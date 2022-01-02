@@ -15,15 +15,17 @@ def func(url,num,ind,cc):
     if(num==1):
         back=""
     count=1
+    counnnt=1
     for tr in titles.children:
         if isinstance(tr, bs4.element.Tag):
             u = tr.find_all("td")
             if(num==0):
-                back+=str(count)
+                back+=str(counnnt)
                 back+=": "
             if(num==0 or index==count):
                 back+=u[0].getText()
                 back+="\n"
+                counnnt+=1
             #print(u[0].getText())
             if(num!=0):
                 if(index==count): 
