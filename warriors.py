@@ -57,7 +57,7 @@ def funcin(url,back,indd,mm):
             if(indd==1):
                 back+=str(counn)
                 back+=": "
-            if(indd!=2 or counn==mm+1):
+            if(indd!=2 or counn==mm):
                 back+=tr.getText()
             if(indd!=2):
                 back+="\n"
