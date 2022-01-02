@@ -44,12 +44,13 @@ class TocMachine(GraphMachine):
 
     def on_enter_state2(self, event):
         print("I'm entering state2")
+        send_text_message(reply_token, "Trigger state2")
         text = event.message.text
-        playerindex=text.split[1]
+        playerindex=text.split()[1]
         print(playerindex)
         a=func(URL,1,playerindex)
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger state2")
+        
         #self.go_back()
 
     #def on_exit_state2(self):
