@@ -29,6 +29,7 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         URL="https://www.basketball-reference.com/teams/GSW/2022.html"
         a=func(URL)
+        send_text_message(reply_token,a)
         #send_text_message(reply_token, "Trigger state1")
         self.go_back()
 

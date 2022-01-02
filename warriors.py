@@ -5,8 +5,6 @@ def func(url):
     })
     with req.urlopen(request) as response:
         data=response.read().decode("utf-8")
-    #path = "output.txt"
-    #f= open(path,"w",encoding="UTF-8")
     import bs4
     root=bs4.BeautifulSoup(data,"html.parser")
     titles=root.find_all("div",class_="table_container", id="div_roster")
@@ -15,12 +13,13 @@ def func(url):
     for tr in titles.children:
         if isinstance(tr, bs4.element.Tag):
             u = tr.find_all("td")
-            back+=u[0].getText()
+            #back+=u[0].getText()
             print(u[0].getText())
-            funcin("https://www.basketball-reference.com"+u[0].a["href"])
+            #a=funcin("https://www.basketball-reference.com"+u[0].a["href"])
+
     account=0
-    send_text_message(reply_token,back)
-    return account
+    #send_text_message(reply_token,back)
+    return back
 
 def funcin(url):
     request=req.Request(url,headers={
@@ -34,22 +33,28 @@ def funcin(url):
     titles=root.tr
     for tr in titles:
         if isinstance(tr, bs4.element.Tag):
-            back+=tr.getText()+" "
+            #back+=tr.getText()
+            #back+=" "
             print(tr.getText(),end=" ")
     print(end="\n")
+    #back+="\n"
     titles=root.tbody
     for tr in titles.children:
         if isinstance(tr, bs4.element.Tag):
             u = tr.find("th")
-            back+=u.getText()+" "
+            #back+=u.getText()
+            #back+=" "
             print(u.getText(),end=" ")
             u = tr.find_all("td")
             for i in range(0,29):
                 print(u[i].getText(),end=" ")
-            back+="\n"
+                #back+=u[i].getText()
+                #back+=" "
+            #back+="\n"
             print(end="\n")
     account=0
     return account
 
-#URL="https://www.basketball-reference.com/teams/GSW/2022.html"
-#a=func(URL)
+URL="https://www.basketball-reference.com/teams/GSW/2022.html"
+a=func(URL) 
+print(a)
