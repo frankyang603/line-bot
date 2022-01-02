@@ -48,7 +48,7 @@ def funcin(url,back,indd,mm):
     root=bs4.BeautifulSoup(data,"html.parser")
     titles=root.find_all("div",class_="table_container current" ,id="div_per_game")
     titles=root.tr
-    counn=0
+    counn=-1
     if(indd==2):
         back+="data of "
     for tr in titles:
