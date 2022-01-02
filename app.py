@@ -9,7 +9,6 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 from fsm import TocMachine
 from utils import send_text_message 
-#from machine_data import  machineData
 
 from transitions.extensions import GraphMachine 
 
