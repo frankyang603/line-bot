@@ -1,5 +1,5 @@
 import urllib.request as req
-def func(url,num):
+def func(url,num,index):
     request=req.Request(url,headers={
         "User-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36",
     })
@@ -10,17 +10,25 @@ def func(url,num):
     titles=root.find_all("div",class_="table_container", id="div_roster")
     titles=root.tbody
     back="warrior player in 2021-22"+"\n"
+    if(num==1):
+        back=""
+    count=1
     for tr in titles.children:
         if isinstance(tr, bs4.element.Tag):
             u = tr.find_all("td")
-            back+=u[0].getText()
-            back+="\n"
+            if(num==0 or index==count):
+                back+=u[0].getText()
+                back+="\n"
             #print(u[0].getText())
             if(num==1):
-               back=funcin("https://www.basketball-reference.com"+u[0].a["href"],back)
-               back+="\n"
-    back+="Select a player"
-    back+="\n"
+                if(index==count): 
+                    back=funcin("https://www.basketball-reference.com"+u[0].a["href"],back)
+                    back+="\n"
+                count+=1
+        #print(count)
+    if(num==0):    
+        back+="Select a player(num)"
+        back+="\n"
     return back
 
 def funcin(url,back):
@@ -60,9 +68,9 @@ def funcin(url,back):
     return back
 
 URL="https://www.basketball-reference.com/teams/GSW/2022.html"
-#a=func(URL,0) 
-#print(a)
+a=func(URL,0,0) 
+print(a)
 
-h="player a"
-print(h.split()[1])
-print("player" in h)
+#h="player a"
+#print(h.split()[1])
+#print("player" in h)

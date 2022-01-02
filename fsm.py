@@ -31,9 +31,10 @@ class TocMachine(GraphMachine):
 
     def on_enter_state1(self, event):
         print("I'm entering state1")
+        
         reply_token = event.reply_token
         URL="https://www.basketball-reference.com/teams/GSW/2022.html"
-        a=func(URL,0)
+        a=func(URL,0,0)
         send_text_message(reply_token,a)
         #send_text_message(reply_token, "Trigger state1")
         #self.go_back()
@@ -43,7 +44,10 @@ class TocMachine(GraphMachine):
 
     def on_enter_state2(self, event):
         print("I'm entering state2")
-
+        text = event.message.text
+        playerindex=text.split[1]
+        print(playerindex)
+        a=func(URL,1,playerindex)
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger state2")
         #self.go_back()
