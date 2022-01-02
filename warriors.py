@@ -18,6 +18,9 @@ def func(url,num,ind,cc):
     for tr in titles.children:
         if isinstance(tr, bs4.element.Tag):
             u = tr.find_all("td")
+            if(num==0):
+                back+=str(count)
+                back+=": "
             if(num==0 or index==count):
                 back+=u[0].getText()
                 back+="\n"
@@ -49,6 +52,9 @@ def funcin(url,back,indd,mm):
     for tr in titles:
         if isinstance(tr, bs4.element.Tag):
             print(counn,end=" ")
+            if(indd==1):
+                back+=str(counn)
+                back+=": "
             if(indd!=2 or counn==mm+1):
                 back+=tr.getText()
             if(indd!=2):
@@ -79,13 +85,8 @@ def funcin(url,back,indd,mm):
     return back
 
 URL="https://www.basketball-reference.com/teams/GSW/2022.html"
-a=func(URL,2,8,4) 
+a=func(URL,1,8,4) 
 print(a)
 
-
-
-#h="player a"
-#print(h.split()[1])
-#print("player" in h)
 
 
