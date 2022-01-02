@@ -60,5 +60,9 @@ def funcin(url,back):
     return back
 
 URL="https://www.basketball-reference.com/teams/GSW/2022.html"
-a=func(URL,0) 
-print(a)
+#a=func(URL,0) 
+#print(a)
+
+h="player a"
+print(h.split()[1])
+print("player" in h)
