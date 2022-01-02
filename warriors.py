@@ -23,7 +23,7 @@ def func(url,num,ind,cc):
             #print(u[0].getText())
             if(num!=0):
                 if(index==count): 
-                    back=funcin("https://www.basketball-reference.com"+u[0].a["href"],back,num)
+                    back=funcin("https://www.basketball-reference.com"+u[0].a["href"],back,num,cc)
                     back+="\n"
                 count+=1
         #print(count)
@@ -32,7 +32,7 @@ def func(url,num,ind,cc):
         back+="\n"
     return back
 
-def funcin(url,back,indd):
+def funcin(url,back,indd,mm):
     request=req.Request(url,headers={
         "User-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36",
     })
@@ -42,13 +42,17 @@ def funcin(url,back,indd):
     root=bs4.BeautifulSoup(data,"html.parser")
     titles=root.find_all("div",class_="table_container current" ,id="div_per_game")
     titles=root.tr
+    counn=0
+    if(indd==2):
+        back+="data of "
     for tr in titles:
         if isinstance(tr, bs4.element.Tag):
-            back+=tr.getText()
-            if(indd==2):
-                back+=" "
-            else:
+            print(counn,end=" ")
+            if(indd!=2 or counn==mm+1):
+                back+=tr.getText()
+            if(indd!=2):
                 back+="\n"
+            counn+=1
             #print(tr.getText(),end=" ")
     #print(end="\n")
     back+="\n"
@@ -62,10 +66,11 @@ def funcin(url,back,indd):
                     back+=" "
                     #print(u.getText(),end=" ")
                     u = tr.find_all("td")
-                    for i in range(0,29):
+                    #for i in range(0,29):
                         #print(u[i].getText(),end=" ")
-                        back+=u[i].getText()
-                        back+=" "
+                    #    back+=u[i].getText()
+                    #    back+=" "
+                    back+=u[mm].getText()
                     back+="\n"
                     #print(end="\n")
                 except AttributeError:
@@ -73,7 +78,7 @@ def funcin(url,back,indd):
     return back
 
 URL="https://www.basketball-reference.com/teams/GSW/2022.html"
-#a=func(URL,2,5) 
+#a=func(URL,2,5,6) 
 #print(a)
 
 #h="player a"
