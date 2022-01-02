@@ -16,9 +16,13 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text.lower() == "go to state1"
 
+    # def is_going_to_state2(self, event):
+    #     text = event.message.text
+    #     return text.lower() == "go to state2"
+
     def is_going_to_state2(self, event):
         text = event.message.text
-        return text.lower() == "go to state2"
+        return  "player" in text.lower()
 
     def is_going_to_state3(self, event):
         text = event.message.text
