@@ -1,5 +1,6 @@
 import urllib.request as req
-def func(url,num,index):
+def func(url,num,ind):
+    index=int(ind)
     request=req.Request(url,headers={
         "User-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36",
     })
@@ -74,3 +75,5 @@ print(a)
 #h="player a"
 #print(h.split()[1])
 #print("player" in h)
+
+
